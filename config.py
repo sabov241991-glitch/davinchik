@@ -1,4 +1,4 @@
-BOT_TOKEN = "ТВОЙ_ТОКЕН"
+BOT_TOKEN = "8271459301:AAFfJCTjO6lMFkWqSqbXGp9Vy8JV-XxS5u0"
 ADMIN_IDS = [1718901610]  # Твой ID
 
 # Настройки
