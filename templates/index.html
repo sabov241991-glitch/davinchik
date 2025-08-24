@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Давинчик Чат - Как в старые добрые временa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td bgcolor="#336699" height="60" align="center">
+                <font size="6" color="white" face="Arial"><b>Давинчик Чат</b></font>
+            </td>
+        </tr>
+        <tr bgcolor="#FF6600">
+            <td height="30" align="center">
+                <font color="white" size="2">
+                    Добро пожаловать в самый уютный чат Рунета! | Онлайн: <b>{{ stats.online }}</b> | 
+                    <a href="{{ url_for('login') }}" style="color:white;">Вход</a> | 
+                    <a href="{{ url_for('register') }}" style="color:white;">Регистрация</a>
+                </font>
+            </td>
+        </tr>
+    </table>
+
+    <table width="800" cellpadding="10" cellspacing="0" border="0" align="center">
+        <tr>
+            <td valign="top" width="200">
+                <!-- Левая колонка - статистика -->
+                <table width="100%" cellpadding="5" cellspacing="0" border="1" bordercolor="#336699">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="2"><b>📊 Статистика</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F0F0F0">
+                            <font size="2">
+                                👥 Онлайн: <b>{{ stats.online }}</b><br>
+                                📝 Регистраций: <b>{{ stats.total_users }}</b><br>
+                                👩 Девушек: <b>{{ stats.girls }}</b><br>
+                                👨 Парней: <b>{{ stats.boys }}</b><br>
+                                💬 Сообщений: <b>{{ stats.total_messages }}</b>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <table width="100%" cellpadding="5" cellspacing="0" border="1" bordercolor="#336699">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="2"><b>🚪 Быстрый вход</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F0F0F0" align="center">
+                            <form method="POST" action="{{ url_for('login') }}">
+                                <font size="2">
+                                    Ник:<br>
+                                    <input type="text" name="username" size="15"><br>
+                                    Пароль:<br>
+                                    <input type="password" name="password" size="15"><br><br>
+                                    <input type="submit" value="Войти" style="background:#336699;color:white;border:1px solid #336699;cursor:pointer;">
+                                </font>
+                            </form>
+                            <br>
+                            <a href="{{ url_for('register') }}"><font size="2">📝 Регистрация</font></a><br>
+                            <a href="{{ url_for('guest_login') }}"><font size="2">🎭 Войти как гость</font></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <td valign="top">
+                <!-- Центральная колонка - комнаты -->
+                <table width="100%" cellpadding="10" cellspacing="0" border="1" bordercolor="#336699">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="4"><b>🏠 Комнаты для общения</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF">
+                            <table width="100%" cellpadding="8" cellspacing="0">
+                                <tr bgcolor="#FFEEAA">
+                                    <td colspan="3" align="center">
+                                        <b>[18+] Для взрослых</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="30">🔥</td>
+                                    <td><a href="{{ url_for('chat', room='main') }}">Общий чат</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+                                <tr>
+                                    <td>💖</td>
+                                    <td><a href="{{ url_for('chat', room='flirt') }}">Флирт и знакомства</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+                                <tr>
+                                    <td>❤️</td>
+                                    <td><a href="{{ url_for('chat', room='love') }}">Любовь и отношения</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+
+                                <tr bgcolor="#DDFFDD">
+                                    <td colspan="3" align="center">
+                                        <b>[16+] Для молодежи</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>🎵</td>
+                                    <td><a href="{{ url_for('chat', room='music') }}">Музыка и кино</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+                                <tr>
+                                    <td>🎮</td>
+                                    <td><a href="{{ url_for('chat', room='games') }}">Игры и развлечения</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+
+                                <tr bgcolor="#DDDDFF">
+                                    <td colspan="3" align="center">
+                                        <b>[14+] Для всех</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>🌍</td>
+                                    <td><a href="{{ url_for('chat', room='general') }}">Общение по интересам</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+                                <tr>
+                                    <td>🇷🇺</td>
+                                    <td><a href="{{ url_for('chat', room='russian') }}">Русский чат</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+                                <tr>
+                                    <td>😊</td>
+                                    <td><a href="{{ url_for('chat', room='polite') }}">Вежливый чат (без мата)</a></td>
+                                    <td align="right">0</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <table width="100%" cellpadding="10" cellspacing="0">
+                    <tr>
+                        <td align="center" bgcolor="#F0F0F0" style="border:1px solid #336699;">
+                            <font size="2">
+                                <b>💡 Не зарегистрирован?</b><br>
+                                <a href="{{ url_for('register') }}">Создай аккаунт</a> чтобы получить доступ ко всем функциям!<br>
+                                Или <a href="{{ url_for('guest_login') }}">войди как гость</a> для быстрого общения.
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <table width="100%" cellpadding="10" cellspacing="0" border="0" bgcolor="#336699">
+        <tr>
+            <td align="center">
+                <font color="white" size="2">
+                    © 2024 Давинчик Чат | Ностальгия по 2000-м | 
+                    <a href="{{ url_for('rules') }}" style="color:white;">Правила</a> | 
+                    <a href="{{ url_for('help_page') }}" style="color:white;">Помощь</a>
+                </font>
+            </td>
+        </tr>
+    </table>
+</body>
+  </html>
