@@ -1,0 +1,7 @@
+flask
+flask-socketio
+flask-login
+flask-sqlalchemy
+gevent
+gevent-websocket
+werkzeug
