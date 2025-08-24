@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Профиль — {{ nick }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>.stars{font-size:20px;line-height:1}</style>
+</head>
+<body class="screen">
+  <div class="card">
+    <div class="toprow">
+      <h2>Профиль: {{ nick }}</h2>
+      <a class="link" href="{{ url_for('lobby') }}">Прихожая</a>
+    </div>
+
+    <p><b>Роль:</b> {{ u.role }}</p>
+    <p><b>О себе:</b> {{ u.about or "—" }}</p>
+    <p><b>Постов:</b> {{ u.posts }}</p>
+    <p><b>Нарушений:</b> {{ u.viol_count }}</p>
+
+    <p><b>Звёздочки:</b>
+      <span class="stars">
+        {% if stars >= 1 %}⭐{% endif %}
+        {% if stars >= 2 %}⭐{% endif %}
+        {% if stars >= 3 %}⭐{% endif %}
+        {% if stars >= 4 %}⭐{% endif %}
+        {% if stars >= 5 %}⭐{% endif %}
+      </span>
+    </p>
+  </div>
+</body>
+</html>
