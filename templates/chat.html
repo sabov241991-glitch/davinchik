@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ room_name }} - Давинчик Чат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td bgcolor="#336699" height="50" align="center">
+                <font size="5" color="white" face="Arial"><b>Давинчик Чат - {{ room_name }}</b></font>
+            </td>
+        </tr>
+        <tr bgcolor="#FF6600">
+            <td height="30" align="center">
+                <font color="white" size="2">
+                    Добро пожаловать, <b>{{ username }}</b>! 
+                    | <a href="{{ url_for('profile') }}" style="color:white;">Профиль</a> 
+                    {% if not session.get('guest') %}
+                    | <a href="{{ url_for('private_messages') }}" style="color:white;">Приват</a>
+                    {% endif %}
+                    | <a href="{{ url_for('logout') }}" style="color:white;">Выйти</a>
+                    | <a href="{{ url_for('index') }}" style="color:white;">Главная</a>
+                </font>
+            </td>
+        </tr>
+    </table>
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td width="200" valign="top" bgcolor="#F0F0F0" style="border-right:2px solid #336699;">
+                <!-- Онлайн пользователи -->
+                <table width="100%" cellpadding="10" cellspacing="0">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="2"><b>👥 Онлайн ({{ online_users|length }})</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="max-height:200px;overflow-y:auto;">
+                                {% for user in online_users %}
+                                <font size="2">
+                                    {{ user.rank }} <b>{{ user.username }}</b><br>
+                                </font>
+                                {% else %}
+                                <font size="2"><center>Пока никого нет</center></font>
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <!-- Комнаты -->
+                <table width="100%" cellpadding="10" cellspacing="0">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="2"><b>🚪 Комнаты</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% for rm, rm_name in rooms.items() %}
+                            <font size="2">
+                                <a href="{{ url_for('chat', room=rm) }}" 
+                                   {% if rm == room %}style="color:#FF6600;font-weight:bold;"{% endif %}>
+                                    {{ rm_name }}
+                                </a><br>
+                            </font>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <!-- Действия -->
+                <table width="100%" cellpadding="10" cellspacing="0">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="2"><b>⚡ Действия</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <font size="2">
+                                <a href="{{ url_for('profile') }}">📇 Мой профиль</a><br>
+                                {% if not session.get('guest') %}
+                                <a href="{{ url_for('private_messages') }}">💌 Приват</a><br>
+                                {% endif %}
+                                <a href="{{ url_for('logout') }}">🚪 Выйти</a><br>
+                                <a href="{{ url_for('index') }}">🏠 Главная</a>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <td valign="top">
+                <!-- Чат -->
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td>
+                            <div id="messages" style="height:400px;overflow-y:auto;border:1px solid #336699;padding:10px;background:white;">
+                                {% for message in messages %}
+                                <div style="margin-bottom:10px;padding:5px;border-bottom:1px dotted #ccc;">
+                                    <font size="2">
+                                        <b>{{ message.username }}:</b> {{ message.message }}
+                                        <font color="#666666" size="1">({{ message.timestamp }})</font>
+                                    </font>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F0F0F0" style="border:1px solid #336699;padding:10px;">
+                            <form id="message-form">
+                                <input type="hidden" id="room" value="{{ room }}">
+                                <table width="100%">
+                                    <tr>
+                                        <td width="85%">
+                                            <input type="text" id="message-input" placeholder="Введите сообщение..." 
+                                                   style="width:100%;padding:5px;border:1px solid #336699;">
+                                        </td>
+                                        <td align="center">
+                                            <button type="button" id="send-button" 
+                                                    style="background:#336699;color:white;border:1px solid #336699;padding:5px 15px;cursor:pointer;">
+                                                Отпр.
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                            <font size="1" color="#666666">
+                                Команды: /me [действие] - действие, /w [ник] [сообщение] - приват
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+  </html>
