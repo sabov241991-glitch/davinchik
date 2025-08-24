@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приватные сообщения - Давинчик Чат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td bgcolor="#336699" height="50" align="center">
+                <font size="5" color="white" face="Arial"><b>💌 Приватные сообщения</b></font>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <table width="800" cellpadding="20" cellspacing="0" border="0" align="center">
+        <tr>
+            <td valign="top" width="70%">
+                <!-- Отправка сообщения -->
+                <table width="100%" cellpadding="15" cellspacing="0" border="1" bordercolor="#336699">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="3"><b>📨 Отправить сообщение</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F0F0F0" align="center">
+                            <form id="pm-form">
+                                <font size="2">
+                                    Кому:<br>
+                                    <input type="text" id="pm-to" placeholder="Ник пользователя" 
+                                           style="width:200px;padding:5px;border:1px solid #336699;margin:5px;"><br>
+                                    Сообщение:<br>
+                                    <textarea id="pm-message" placeholder="Введите сообщение..." 
+                                              style="width:300px;height:60px;padding:5px;border:1px solid #336699;margin:5px;"></textarea><br>
+                                    <button type="button" id="pm-send" 
+                                            style="background:#336699;color:white;border:1px solid #336699;padding:5px 15px;cursor:pointer;">
+                                        Отправить
+                                    </button>
+                                </font>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <!-- Полученные сообщения -->
+                <table width="100%" cellpadding="15" cellspacing="0" border="1" bordercolor="#336699">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="3"><b>📥 Входящие ({{ received|length }})</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F0F0F0">
+                            {% if received %}
+                                {% for msg in received %}
+                                <div style="margin-bottom:15px;padding:10px;border:1px solid #DDD;background:white;">
+                                    <font size="2">
+                                        <b>От:</b> {{ msg.from_user }}<br>
+                                        <b>Время:</b> {{ msg.timestamp.strftime('%d.%m.%Y %H:%M') }}<br>
+                                        <b>Сообщение:</b><br>
+                                        {{ msg.message }}
+                                    </font>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <font size="2" style="padding:10px;display:block;text-align:center;">
+                                    Нет входящих сообщений
+                                </font>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <td valign="top">
+                <!-- Отправленные сообщения -->
+                <table width="100%" cellpadding="15" cellspacing="0" border="1" bordercolor="#336699">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="3"><b>📤 Исходящие ({{ sent|length }})</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F0F0F0">
+                            {% if sent %}
+                                {% for msg in sent %}
+                                <div style="margin-bottom:15px;padding:10px;border:1px solid #DDD;background:white;">
+                                    <font size="2">
+                                        <b>Кому:</b> {{ msg.to_user }}<br>
+                                        <b>Время:</b> {{ msg.timestamp.strftime('%d.%m.%Y %H:%M') }}<br>
+                                        <b>Сообщение:</b><br>
+                                        {{ msg.message }}
+                                    </font>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <font size="2" style="padding:10px;display:block;text-align:center;">
+                                    Нет исходящих сообщений
+                                </font>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <!-- Быстрые действия -->
+                <table width="100%" cellpadding="15" cellspacing="0" border="1" bordercolor="#336699">
+                    <tr bgcolor="#336699">
+                        <td align="center">
+                            <font color="white" size="3"><b>⚡ Быстрые действия</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F0F0F0" align="center">
+                            <font size="2">
+                                <a href="{{ url_for('chat', room='main') }}">💬 В чат</a><br><br>
+                                <a href="{{ url_for('profile') }}">📇 Профиль</a><br><br>
+                                <a href="{{ url_for('index') }}">🏠 Главная</a><br><br>
+                                <a href="{{ url_for('logout') }}">🚪 Выйти</a>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+                              </html>
