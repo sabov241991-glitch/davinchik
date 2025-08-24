@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Давинчик 💌</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;margin:0;background:#0b0e14;color:#e7e7ea}
+    header{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#111522;position:sticky;top:0}
+    .logo{width:26px;height:20px;background:white;display:inline-block;border-radius:4px;position:relative}
+    .logo:after{content:"";position:absolute;width:10px;height:10px;background:#e5484d;border-radius:50%;right:2px;top:2px}
+    h1{font-size:18px;margin:0;display:flex;gap:8px;align-items:center}
+    .stars{font-size:16px;margin-left:auto}
+    .wrap{padding:14px}
+    #chat{height:55vh;overflow:auto;border:1px solid #23273a;border-radius:12px;padding:10px;background:#0f1422}
+    .msg{margin:6px 0}
+    .msg b{color:#7aa2ff}
+    .sys b{color:#ffb454}
+    .row{display:flex;gap:8px;margin-top:10px}
+    input[type=text]{flex:1;padding:10px;border-radius:10px;border:1px solid #2b2f45;background:#0f1422;color:#e7e7ea}
+    button{padding:10px 14px;border-radius:10px;border:0;background:#7aa2ff;color:#0b0e14;font-weight:700}
+    .meta{font-size:12px;color:#9aa0b4;margin:8px 0 0}
+    a{color:#7aa2ff}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+</head>
+<body>
+<header>
+  <span class="logo"></span>
+  <h1>Давинчик <span>💌</span></h1>
+  <div class="stars">★</div>
+</header>
+
+<div class="wrap">
+  <div class="meta">
+    Привет, <b>{{ user.username }}</b> • Роль: <b>{{ user.role }}</b> •
+    <a href="{{ url_for('logout') }}">Выйти</a>
+  </div>
+
+  <div id="chat"></div>
+
+  <div class="row">
+    <input id="msg" type="text" placeholder="Напишите сообщение…">
+    <button onclick="sendMsg()">Отправить</button>
+  </div>
+</div>
+
+<script>
+  const socket = io();
+
+  function sendMsg(){
+    const i = document.getElementById('msg');
+    const t = i.value.trim();
+    if(!t) return;
+    socket.emit('message', t);
+    i.value='';
+  }
+
+  socket.on('message', (data)=>{
+    const box = document.getElementById('chat');
+    const p = document.createElement('p');
+    p.className = 'msg' + (data.user === 'Система' ? ' sys' : '');
+    p.innerHTML = `<b>${data.user}:</b> ${data.msg}`;
+    box.appendChild(p);
+    box.scrollTop = box.scrollHeight;
+  });
+
+  // Enter = отправить
+  document.getElementById('msg').addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){ sendMsg(); }
+  });
+</script>
+</body>
+</html>
