@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Регистрация — Давинчик 💌</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="screen">
+  <div class="card">
+    <h2>Регистрация в Давинчик 💌</h2>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form method="post" class="form">
+      <label>Ник</label>
+      <input name="username" required>
+      <label>Пароль</label>
+      <input type="password" name="password" required>
+      <label>Повтори пароль</label>
+      <input type="password" name="password2" required>
+      <label>О себе</label>
+      <textarea name="about" rows="3" placeholder="Коротко о себе..."></textarea>
+      <button class="btn w100" type="submit">Создать аккаунт</button>
+    </form>
+    <p class="muted"><a href="{{ url_for('login') }}">У меня уже есть аккаунт</a></p>
+  </div>
+</body>
+</html>
