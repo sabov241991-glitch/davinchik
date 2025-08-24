@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Давинчик</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Добро пожаловать в Давинчик 💌</h1>
+        </div>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <img src="{{ url_for('static', filename='peach_tree.png') }}" alt="Персиковое дерево" style="width: 150px; height: 150px;">
+        </div>
+        
+        <div style="text-align: center; margin: 15px 0; font-size: 18px;">
+            Онлайн (0)
+        </div>
+        
+        <div style="display: flex; justify-content: center; gap: 30px; margin: 20px 0; flex-wrap: wrap;">
+            <!-- Кнопка Вход слева -->
+            <a href="{{ url_for('login') }}" style="padding: 12px 30px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; text-align: center;">
+                Вход
+            </a>
+            
+            <!-- Кнопка Регистрация справа -->
+            <a href="{{ url_for('register') }}" style="padding: 12px 30px; background: #2196F3; color: white; text-decoration: none; border-radius: 5px; text-align: center;">
+                Регистрация
+            </a>
+        </div>
+        
+        <!-- Статистика под кнопками -->
+        <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd; max-width: 200px; margin: 0 auto;">
+            <div style="font-weight: bold; margin-bottom: 10px; text-align: center;">Статистика:</div>
+            <div>Регистраций (3)</div>
+            <div>Девушек (2)</div>
+            <div>Парней (1)</div>
+        </div>
+    </div>
+</body>
+</html>
