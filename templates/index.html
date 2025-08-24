@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Чат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Добро пожаловать в Чат</h1>
+        </div>
+        <div class="auth-container">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <p>Присоединяйтесь к нашему сообществу</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <a href="{{ url_for('login') }}" class="btn">Войти</a>
+                <a href="{{ url_for('register') }}" class="btn" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
