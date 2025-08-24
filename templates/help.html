@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помощь - Давинчик Чат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td bgcolor="#336699" height="60" align="center">
+                <font size="6" color="white" face="Arial"><b>❓ Помощь</b></font>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <table width="800" cellpadding="20" cellspacing="0" border="0" align="center">
+        <tr>
+            <td bgcolor="#F0F0F0" style="border:2px solid #336699;">
+                <font size="4" color="#336699"><b>📚 Часто задаваемые вопросы:</b></font>
+                <br><br>
+                
+                <font size="3">
+                    <b>🤔 Как зарегистрироваться?</b><br>
+                    <font size="2">
+                        • Нажмите "Регистрация" на главной странице<br>
+                        • Придумайте никнейм и пароль<br>
+                        • Заполните дополнительную информацию<br>
+                        • Нажмите "Зарегистрироваться"<br><br>
+                    </font>
+
+                    <b>💬 Как общаться в чате?</b><br>
+                    <font size="2">
+                        • Выберите комнату для общения<br>
+                        • Введите сообщение в поле ввода<br>
+                        • Нажмите "Отпр." или Enter<br>
+                        • Сообщение появится в общем чате<br><br>
+                    </font>
+
+                    <b>📨 Как отправить приватное сообщение?</b><br>
+                    <font size="2">
+                        • Используйте команду: /w ник сообщение<br>
+                        • Пример: /w Davinchik Привет!<br>
+                        • Сообщение придет в личные сообщения<br><br>
+                    </font>
+
+                    <b>🎭 Как сделать действие?</b><br>
+                    <font size="2">
+                        • Используйте команду: /me действие<br>
+                        • Пример: /me пьет чай<br>
+                        • В чате появится: *Davinchik пьет чай*<br><br>
+                    </font>
+
+                    <b>💰 Что такое кредиты?</b><br>
+                    <font size="2">
+                        • Кредиты - валюта чата<br>
+                        • +1 кредит за каждое сообщение<br>
+                        • Можно тратить в магазине<br>
+                        • За нарушения снимаются кредиты<br><br>
+                    </font>
+
+                    <b>🎯 Как повысить ранг?</b><br>
+                    <font size="2">
+                        • Ранг зависит от количества сообщений<br>
+                        • 0+ сообщений: 👶 Новичок<br>
+                        • 50+ сообщений: 🔥 Постоянный<br>
+                        • 200+ сообщений: 💫 Активный<br>
+                        • 500+ сообщений: 🌟 Ветеран<br>
+                        • 1000+ сообщений: 👑 Легенда<br><br>
+                    </font>
+
+                    <b>🛡️ Как стать модератором?</b><br>
+                    <font size="2">
+                        • Быть активным и вежливым<br>
+                        • Помогать другим пользователям<br>
+                        • Соблюдать правила чата<br>
+                        • Администрация сама предлагает права<br>
+                    </font>
+                </font>
+
+                <br><br>
+                <hr style="border:1px solid #336699;">
+                <br>
+
+                <center>
+                    <font size="2">
+                        Нужна дополнительная помощь?<br>
+                        Обращайтесь к администрации в личные сообщения.
+                    </font>
+                    <br><br>
+                    <a href="{{ url_for('index') }}">← На главную</a> | 
+                    <a href="{{ url_for('chat', room='main') }}">💬 В чат</a> | 
+                    <a href="{{ url_for('rules') }}">📜 Правила</a>
+                </center>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
