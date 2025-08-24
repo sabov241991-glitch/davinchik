@@ -1,0 +1,223 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E0E0E0;
+    background-image: url('bg_pattern.gif');
+    background-repeat: repeat;
+}
+
+a {
+    color: #336699;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF6600;
+}
+
+input, button, textarea, select {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #FF6600 !important;
+}
+
+/* Стили для таблиц */
+table {
+    border-collapse: collapse;
+}
+
+/* Стили для форм */
+input[type="text"], 
+input[type="password"], 
+input[type="number"],
+textarea,
+select {
+    border: 1px solid #336699;
+    padding: 4px;
+    background: white;
+}
+
+button, input[type="submit"] {
+    background: #336699;
+    color: white;
+    border: 1px solid #336699;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background: #FF6600;
+    border-color: #FF6600;
+}
+
+/* Прокрутка */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F0F0F0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #336699;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF6600;
+}
+
+/* Анимации */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.new-message {
+    animation: blink 1s ease-in-out;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        background-image: none;
+        background-color: #F0F0F0;
+    }
+    
+    table {
+        width: 100% !important;
+    }
+    
+    td[width] {
+        width: auto !important;
+        display: block;
+        float: none;
+    }
+    
+    font[size="6"] {
+        font-size: 4vw !important;
+    }
+    
+    font[size="5"] {
+        font-size: 3.5vw !important;
+    }
+    
+    font[size="4"] {
+        font-size: 3vw !important;
+    }
+    
+    #messages {
+        height: 300px !important;
+        font-size: 14px !important;
+    }
+    
+    .container {
+        padding: 5px !important;
+    }
+    
+    input, button, textarea {
+        font-size: 16px !important; /* Увеличиваем для мобильных */
+        padding: 8px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    font[size="6"] {
+        font-size: 20px !important;
+    }
+    
+    #messages {
+        height: 250px !important;
+    }
+    
+    .header {
+        padding: 10px 5px !important;
+    }
+    
+    input, button, textarea {
+        font-size: 14px !important;
+        padding: 6px !important;
+    }
+}
+
+/* Специальные стили для разных элементов */
+.online-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #00FF00;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.offline-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #FF0000;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.vip-user {
+    color: #FF00FF !important;
+    font-weight: bold;
+}
+
+.moderator-user {
+    color: #FF6600 !important;
+    font-weight: bold;
+}
+
+.admin-user {
+    color: #FF0000 !important;
+    font-weight: bold;
+}
+
+/* Стили для системных сообщений */
+.system-message {
+    color: #666666;
+    font-style: italic;
+}
+
+.error-message {
+    color: #FF0000;
+    background: #FFEEEE;
+    padding: 5px;
+    border: 1px solid #FF0000;
+}
+
+.success-message {
+    color: #00AA00;
+    background: #EEFFEE;
+    padding: 5px;
+    border: 1px solid #00AA00;
+}
+
+/* Стили для различных состояний */
+.highlight {
+    background: #FFFFCC !important;
+}
+
+.blink {
+    animation: blink 2s infinite;
+}
+
+/* Стили для рейтинга */
+.positive-rating {
+    color: #00AA00;
+}
+
+.negative-rating {
+    color: #FF0000;
+      }
