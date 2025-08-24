@@ -1,6 +1,6 @@
 import os
 
-BOT_TOKEN = os.getenv('BOT_TOKEN', 'YOUR_BOT_TOKEN_HERE')
+BOT_TOKEN = os.getenv('BOT_TOKEN', '8271459301:AAFfJCTjO6lMFkWqSqbXGp9Vy8JV-XxS5u0')
 ADMIN_IDS = [123456789]
 DATABASE_PATH = 'davinchik.db'
 
