@@ -1,0 +1,5 @@
+EMOJIS = {
+    'admin': '👑',
+    'user': '👤',
+    'online': '🟢'
+}
