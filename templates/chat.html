@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ room_name }} — Давинчик 💌</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body class="chat-screen">
+  <header class="chat-header">
+    <div class="title">Давинчик 💌</div>
+    <div class="room">{{ room_name }} (<span id="roomcount">0</span>)</div>
+    <a class="link" href="{{ url_for('lobby') }}">Прихожая</a>
+  </header>
+
+  <div id="jumpNew" class="jump" style="display:none" onclick="jumpToNew()">Перейти к новым <span id="newCount"></span></div>
+
+  <main id="chat" class="chat"></main>
+
+  <footer class="chat-input">
+    <input id="text" maxlength="2000" placeholder="Сообщение...  (/hi Имя — поприветствовать)">
+    <button class="btn send" onclick="sendMsg()">Отправить</button>
+  </footer>
+
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+  <script>
+    window.DAV = {
+      username: "{{ username }}",
+      room: "{{ room_name }}"
+    };
+  </script>
+</body>
+</html>
