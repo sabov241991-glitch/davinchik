@@ -1,5 +1,0 @@
-EMOJIS = {
-    'admin': '👑',
-    'user': '👤',
-    'online': '🟢'
-}
