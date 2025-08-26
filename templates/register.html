@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Диванчик 💌 | Правила регистрации</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='images/header-bg.jpg') }}" alt="Диванчик 💌">
+        </div>
+        
+        <div class="content">
+            <h1>Правила регистрации</h1>
+            
+            <div class="rules">
+                <p>* Разрешено в "нике" использовать только кириллицу и знаки латинского алфавита, цифры (кроме 0), а также символы: @, ), (, *, !, -, ~, _, ], [, =.</p>
+                <p>* Разрешено в пароле использовать только знаки латинского алфавита и цифры.</p>
+                <p>* Пароль не может быть короче четырёх символов.</p>
+                <p>* Запрещено использовать одновременно русские и латинские знаки.</p>
+                <p>* Обязательно заполните все поля, помеченные звездочкой (*).</p>
+                <p>* Рекомендуем указать e-mail для восстановления пароля.</p>
+                <p>* После регистрации заполните анкету в личном кабинете.</p>
+            </div>
+            
+            <br>
+            <a href="{{ url_for('register_step1') }}" class="button">Начать регистрацию</a>
+            <br><br>
+            <a href="{{ url_for('index') }}"><< Главная <<</a>
+            
+            <div class="footer">
+                <p>[ 0.0022 | Сжатие: 61.4% ]</p>
+                <p>© Диванчик 💌</p>
+            </div>
+        </div>
+    </div>
+</body>
+            </html>
