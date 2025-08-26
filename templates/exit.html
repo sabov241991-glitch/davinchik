@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Диванчик 💌 | Выход</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='images/header-bg.jpg') }}" alt="Диванчик 💌">
+        </div>
+        
+        <div class="content">
+            <h1>Выход</h1>
+            <p><strong>Выход выполнен</strong></p>
+            <p>(Автоматическое перенаправление на главную...)</p>
+            
+            <div class="footer">
+                <p>davinchik.onrender.com</p>
+                <p>Диванчик 💌</p>
+                <p>[ 0.0014 | Сжатие: 64.5% ]</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        setTimeout(function() {
+            window.location.href = "{{ url_for('index') }}";
+        }, 3000);
+    </script>
+</body>
+</html>
