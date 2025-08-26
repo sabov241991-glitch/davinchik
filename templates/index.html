@@ -1,0 +1,63 @@
+
+---
+
+## 📁 **ПАПКА templates/**
+
+### 6. 📄 **templates/index.html**
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Диванчик 💌 | Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='images/header-bg.jpg') }}" alt="Диванчик 💌">
+        </div>
+        
+        <div class="content">
+            <div class="stats">
+                <p><strong>В Чате:</strong> {{ stats.online }} человек</p>
+            </div>
+            
+            <div class="menu">
+                <p>> Регистрация <</p>
+                
+                <form action="{{ url_for('login') }}" method="post">
+                    <p><strong>Ваш Ник или ID:</strong></p>
+                    <input type="text" name="username" required>
+                    
+                    <p><strong>Пароль:</strong></p>
+                    <input type="password" name="password" required>
+                    
+                    <label>
+                        <input type="checkbox" name="remember"> Запомнить Меня
+                    </label>
+                    
+                    <br><br>
+                    <input type="submit" value="Войти">
+                </form>
+                
+                <p><a href="{{ url_for('register') }}">Забыли пароль?</a></p>
+            </div>
+            
+            <div class="footer-stats">
+                <p>» Новеньких: {{ stats.new_users }}</p>
+                <p>» Именинников: {{ stats.birthdays }}</p>
+                <p>» Регистраций: {{ stats.total_reg }}</p>
+                <p>» Всего Парней: {{ stats.total_men }}</p>
+                <p>» Всего Девушек: {{ stats.total_women }}</p>
+                <p>» Посетит. за сутки: {{ stats.daily_visitors }}</p>
+            </div>
+            
+            <div class="footer">
+                <p>[ 0.0468 | Сжатие: 63.1% ]</p>
+                <p>© =BeTeP= © 2025</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
