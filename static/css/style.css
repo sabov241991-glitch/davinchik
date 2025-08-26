@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #000;
+    line-height: 1.4;
+    padding: 10px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+.divider {
+    text-align: center;
+    color: #000;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.chat-info {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.registration-link {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.registration-link a {
+    color: #000;
+    text-decoration: none;
+}
+
+.login-form {
+    margin: 15px 0;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    font-family: monospace;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #ddd;
+    border: 1px solid #999;
+    color: #000;
+    font-weight: normal;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.forgot-password {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.main-menu {
+    margin: 15px 0;
+}
+
+.main-menu div {
+    margin: 5px 0;
+}
+
+.main-menu a {
+    color: #000;
+    text-decoration: none;
+}
+
+.stats {
+    font-size: 14px;
+    color: #000;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.exit {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.wap {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.nick-reg {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.exchange {
+    margin-bottom: 3px;
+}
+
+.tech-info {
+    margin-bottom: 3px;
+}
+
+.formats {
+    color: #888;
+}
