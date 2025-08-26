@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 5px;
+    color: #000;
+    line-height: 1.4;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.title-frame {
+    background: #808080;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+}
+
+.title-frame h1 {
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.stats {
+    background: #e0e0e0;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #a9a9a9;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+}
+
+.menu {
+    background: #f8f8f8;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+
+.menu h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #000;
+}
+
+.menu p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+input[type="text"], 
+input[type="password"] {
+    width: 95%;
+    padding: 6px;
+    margin: 4px 0;
+    border: 1px solid #999;
+    background: #fff;
+    font-size: 13px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    background: #808080;
+    color: #fff;
+    padding: 8px 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+label {
+    font-size: 13px;
+}
+
+.footer-stats {
+    background: #f8f8f8;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+
+.footer-stats p {
+    margin: 4px 0;
+    padding: 2px;
+    border-bottom: 1px dotted #ccc;
+}
+
+.footer-stats p:last-child {
+    border-bottom: none;
+}
+
+.footer {
+    margin-top: 15px;
+    font-size: 11px;
+    color: #666;
+    padding: 8px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.chat-menu {
+    text-align: left;
+    line-height: 1.4;
+}
+
+.chat-menu p {
+    margin: 3px 0;
+    padding: 1px;
+    font-size: 13px;
+}
+
+.chat-menu a {
+    color: #000;
+    text-decoration: none;
+}
+
+.datetime {
+    background: #f0f0f0;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    text-align: center;
+}
+
+.poem {
+    background: #f8f8f8;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    font-style: italic;
+    line-height: 1.5;
+    font-size: 12px;
+    text-align: center;
+}
+
+.flash-messages {
+    margin: 8px 0;
+}
+
+.flash {
+    padding: 8px;
+    margin: 4px 0;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid;
+}
+
+.flash.error {
+    background: #ffcccc;
+    color: #cc0000;
+    border-color: #cc0000;
+}
+
+.flash.success {
+    background: #ccffcc;
+    color: #006600;
+    border-color: #006600;
+}
+
+.home-button {
+    background: #808080;
+    color: #fff;
+    padding: 6px 12px;
+    border: 1px solid #000;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.links {
+    margin: 8px 0;
+    padding: 5px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.links p {
+    margin: 3px 0;
+    font-size: 12px;
+}
+
+hr {
+    border: none;
+    border-top: 1px dotted #ccc;
+    margin: 8px 0;
+}
+
+.small-text {
+    font-size: 11px;
+    color: #666;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+        margin: 2px;
+    }
+    
+    .title-frame h1 {
+        font-size: 16px;
+    }
+    
+    input[type="text"], 
+    input[type="password"] {
+        width: 98%;
+    }
+}
