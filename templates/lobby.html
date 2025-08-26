@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Диванчик | Лобби</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-frame">
+                <h1>ДИВАНЧИК</h1>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="stats">
+                <p><strong>В Чате:</strong> {{ g.stats.online }} человек</p>
+            </div>
+            
+            <div class="menu">
+                <h3>Добро пожаловать, {{ session.username }}!</h3>
+                
+                <div class="datetime">
+                    <p><strong>Время:</strong> {{ time }}</p>
+                    <p><strong>Дата:</strong> {{ date }}</p>
+                    <p><strong>День:</strong> {{ day }}</p>
+                </div>
+                
+                <div class="chat-menu">
+                    <p><a href="{{ url_for('menu') }}">➤ Меню чата</a></p>
+                    <p><a href="#">➤ Личные сообщения</a></p>
+                    <p><a href="#">➤ Общий чат</a></p>
+                    <p><a href="#">➤ Игры</a></p>
+                    <p><a href="#">➤ Настройки</a></p>
+                    <p><a href="{{ url_for('exit') }}">➤ Выход</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-stats">
+                <p>» Онлайн: {{ g.stats.online }}</p>
+                <p>» Новеньких: {{ g.stats.new_users }}</p>
+                <p>» Именинников: {{ g.stats.birthdays }}</p>
+                <p>» Посетителей: {{ g.stats.daily_visitors }}</p>
+            </div>
+            
+            <div class="footer">
+                <p>[ 0.0468 | Сжатие: 63.1% ]</p>
+                <p>© =ВеТер= © 2025</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
