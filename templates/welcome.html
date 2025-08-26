@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Диванчик 💌 | Регистрация завершена</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='images/header-bg.jpg') }}" alt="Диванчик 💌">
+        </div>
+        
+        <div class="content">
+            <h1>Регистрация завершена</h1>
+            
+            <div class="success-message">
+                <p>Поздравляем!</p>
+                <p>Вы успешно зарегистрированы!</p>
+                
+                <div class="user-info">
+                    <p><strong>Ваш ник:</strong> {{ user.username }}</p>
+                    <p><strong>Ваш ID:</strong> {{ user.id }}</p>
+                    <p><strong>Пароль:</strong> {{ user.password }}</p>
+                </div>
+                
+                <p>Администрация чата вам присваивает:</p>
+                <p><strong>Постов:</strong> {{ user.posts_count }}</p>
+                <p><strong>Статус:</strong> {{ user.status }}</p>
+                
+                <div class="autologin">
+                    <p><strong>Автологин (Вход по закладке)</strong></p>
+                    <p>Внимание, обычный автологин у нас не действует, поэтому для автологина используйте ссылку:</p>
+                    <p>http://davinchik.onrender.com/go.php?i={{ user.id }}&p={{ user.password }} - автовыбор версии;</p>
+                    <p>http://davinchik.onrender.com/go.php?i={{ user.id }}&p={{ user.password }}&tpl=wml - нецветная версия;</p>
+                    <p>http://davinchik.onrender.com/go.php?i={{ user.id }}&p={{ user.password }}&tpl=xml - цветная версия.</p>
+                    <p>Скопировать автологин:</p>
+                    <p>[http://davinchik.onrender.com/go.php?]</p>
+                </div>
+                
+                <p>Данные отправлены на Ваш E-Mail.</p>
+            </div>
+            
+            <br>
+            <a href="{{ url_for('lobby') }}">> В Чат ></a>
+            <br>
+            <a href="{{ url_for('index') }}">< На главную <</a>
+            
+            <div class="footer">
+                <p>[ 0.6949 | Сжатие: 61.5% ]</p>
+                <p>© Диванчик 💌</p>
+            </div>
+        </div>
+    </div>
+</body>
+            </html>
