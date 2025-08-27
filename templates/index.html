@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ДАВИНЧИК</title>
+  <style>
+    :root{
+      --bg:#eef4fb;
+      --panel:#f6fbff;
+      --ink:#0d1321;
+      --ink-soft:#1a2233;
+      --line:#c9d8ef;
+      --line-deep:#9fb6db;
+      --accent:#1e3a8a;
+    }
+
+    html,body{
+      margin:0;
+      background:var(--bg);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    /* Центрируем и даём «канву» как у оригинала */
+    .page {
+      max-width: 720px;
+      margin: 18px auto 40px;
+      padding: 0 10px;
+    }
+
+    /* Общая панель с двойной окантовкой */
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 0 3px #e6eef9, inset 0 0 0 6px var(--line);
+      border-radius: 6px;
+      padding: 14px;
+    }
+    .card + .card{ margin-top: 16px; }
+
+    /* Шапка */
+    .heading{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 0 3px #e6eef9, inset 0 0 0 6px var(--line);
+      border-radius: 6px;
+      padding: 10px 12px 6px;
+      text-align:center;
+    }
+    .title{
+      margin: 4px 0 6px;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--ink);
+    }
+    .sep{ color: var(--ink-soft); font-weight: 700; }
+
+    /* Строки даты/времени */
+    .dt{
+      margin: 2px 0;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Секция стихотворения — узкая колонка, жирный курсив как в образце */
+    .poem-wrap{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 0 3px #e6eef9, inset 0 0 0 6px var(--line);
+      border-radius: 12px;
+      padding: 18px 14px;
+    }
+    .poem {
+      max-width: 520px;          /* сужаем «колонку» */
+      margin: 0 auto;
+      text-align: center;
+      font-style: italic;
+      font-weight: 800;
+      font-size: 28px;           /* крупно как в оригинале */
+      line-height: 1.38;         /* плотнее межстрочный */
+      letter-spacing: .2px;      /* немного «плотнее» */
+      color: #0b0f1c;            /* темнее шрифт */
+      text-shadow: 0 0 .01em rgba(0,0,0,.02);
+    }
+    .poem p {                     /* строфы */
+      margin: 18px 0 22px;        /* расстояние между строфами как у оригинала */
+    }
+
+    /* Блок «В чате …» и форма входа */
+    .mid-note{
+      text-align:center;
+      color: var(--ink-soft);
+      font-weight: 700;
+    }
+    .mid-note .line{ margin: 6px 0 2px; }
+    .mid-note .strong{ color: var(--ink); font-weight: 800; }
+
+    .login{
+      max-width: 560px;
+      margin: 10px auto 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 0 3px #e6eef9, inset 0 0 0 6px var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .field{ margin: 10px 0; }
+    label{
+      display:block;
+      margin-bottom: 6px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    input[type="text"], input[type="password"]{
+      width: 100%;
+      box-sizing: border-box;
+      height: 42px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 8px 12px;
+      font-size: 18px;
+      font-family: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+    .row{
+      display:flex; align-items:center; gap:10px;
+      margin-top:8px;
+    }
+    .row input[type="checkbox"]{ width:20px; height:20px; }
+    .btn{
+      display:inline-block;
+      margin-top:12px;
+      padding: 8px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--line-deep);
+      background:#fff;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    /* Ссылки блока под формой */
+    .links{
+      text-align:center;
+      margin: 18px 0 6px;
+    }
+    .links a{
+      display:block;
+      color:#173a7a;
+      font-weight: 800;
+      text-decoration: none;
+      margin: 6px 0;
+    }
+
+    /* Статистика + компрессия */
+    .stats{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 0 3px #e6eef9, inset 0 0 0 6px var(--line);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .stats ul{ margin: 0; padding-left: 18px; }
+    .compress{
+      text-align:center; margin-top: 12px;
+      font-weight: 800; color: var(--ink);
+    }
+
+    .footer{
+      text-align:center;
+      color: var(--ink);
+      font-weight: 800;
+      margin: 16px 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Шапка -->
+    <div class="heading">
+      <div class="title">ДАВИНЧИК</div>
+      <div class="sep">~-~</div>
+      <div class="dt">Добро Пожаловать</div>
+      <div class="dt">-</div>
+      <div class="dt">{{ time_str }}</div>
+      <div class="dt">{{ date_str }}</div>
+      <div class="dt">{{ weekday_str }}</div>
+      <div class="sep">~-~</div>
+    </div>
+
+    <!-- Стих -->
+    <div class="poem-wrap">
+      <div class="poem">
+
+        <p>Когда ночами мне одному не спится,<br>
+        К компьютеру душа меня зовет.<br>
+        За окнами на ветке спит синица,<br>
+        А утром соловей там запоет.</p>
+
+        <p>Письмо твое в Давинчике зависает,<br>
+        С улыбкой на лице его прочту,<br>
+        И каждый смайлик душу согревает,<br>
+        Я в сердце о тебе храню мечту!</p>
+
+        <p>Рука коснется букв клавиатуры,<br>
+        И в каждом слове нежность и любовь,<br>
+        Пускай, что небеса сегодня хмуры,<br>
+        Я знаю, что напишешь ты мне вновь!</p>
+
+        <p>Я верю, что ты будешь улыбаться,<br>
+        И верю в виртуальную любовь!!!<br>
+        По-разному мы можем все влюбляться,<br>
+        Но одинаково горит от страсти кровь...</p>
+
+      </div>
+    </div>
+
+    <!-- «В чате» + форма -->
+    <div class="card mid-note">
+      <div class="line">.-~-.</div>
+      <div class="strong">В Чате: {{ online_users }} человек</div>
+      <div class="line">__=__</div>
+
+      <div class="login">
+        <div class="field">
+          <label for="nick">Ваш Ник или ID:</label>
+          <input id="nick" type="text" placeholder="" />
+        </div>
+        <div class="row">
+          <input id="tr" type="checkbox" />
+          <label for="tr">Транслит ника:(?)</label>
+        </div>
+        <div class="field">
+          <label for="pwd">Пароль:</label>
+          <input id="pwd" type="password" placeholder="" />
+        </div>
+        <div class="row">
+          <input id="remember" type="checkbox" />
+          <label for="remember">Запомнить Меня</label>
+        </div>
+        <button class="btn">Войти</button>
+      </div>
+
+      <div class="links">
+        <a href="#">Забыли пароль?</a>
+      </div>
+      <div class="links" style="margin-top:6px;">
+        <a href="#">Регистрация</a>
+        <a href="#">Фото-альбом</a>
+        <a href="#">Правила чата</a>
+        <a href="#">Письмо админу</a>
+      </div>
+    </div>
+
+    <!-- Статистика и компрессия -->
+    <div class="stats">
+      <ul>
+        <li>Новеньких: {{ stats.new_users }}</li>
+        <li>Именинников: {{ stats.birthdays }}</li>
+        <li>Регистраций: {{ stats.registrations }}</li>
+        <li>Всего Парней: {{ stats.males }}</li>
+        <li>Всего Девушек: {{ stats.females }}</li>
+        <li>Посетит. за сутки: {{ stats.visits_today }}</li>
+      </ul>
+      <div class="compress">[ {{ compress.size }} | Сжатие: {{ compress.ratio }} ]</div>
+    </div>
+
+    <div class="footer">©ДАВИНЧИК ©2025</div>
+  </div>
+</body>
+  </html>
