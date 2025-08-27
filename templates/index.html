@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ДАВИНЧИК</title>
+  <style>
+    body {
+      font-family: "Times New Roman", serif;
+      background-color: #f8f9fc;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      width: 95%;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 6px double #aabbee;
+      background-color: #f0f4ff;
+    }
+    .header {
+      border: 3px double #aabbee;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .welcome {
+      margin: 8px 0;
+      font-weight: bold;
+    }
+    .datetime {
+      margin: 6px 0;
+    }
+    .poem {
+      font-style: italic;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1.2;       /* строки плотнее */
+      max-width: 500px;       /* блок уже */
+      margin: 20px auto;
+      text-align: center;
+      white-space: pre-line;  /* переносы сохраняются */
+    }
+    .poem-gap { height: 14px; }
+    .chat-box {
+      border: 3px double #aabbee;
+      background: #fff;
+      margin-top: 15px;
+      padding: 10px;
+    }
+    .stats {
+      border: 3px double #aabbee;
+      background: #fff;
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 15px;
+      text-align: left;
+    }
+    .footer {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #333;
+    }
+    a {
+      color: #0000aa;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    input[type="text"], input[type="password"] {
+      width: 90%;
+      padding: 4px;
+      margin: 4px 0;
+      border: 1px solid #999;
+      border-radius: 3px;
+    }
+    button {
+      padding: 4px 10px;
+      margin-top: 6px;
+      border: 1px solid #555;
+      border-radius: 3px;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">ДАВИНЧИК</div>
+      <div class="welcome">-~-<br>Добро Пожаловать<br>-</div>
+      <div class="datetime">{{ current_time }}<br>{{ current_date }}<br>{{ current_day }}</div>
+      <div class="welcome">-~-</div>
+    </div>
+
+    <div class="poem">
+Когда ночами мне одному не спится,
+К компьютеру душа меня зовет.
+За окнами на ветке спит синица,
+А утром соловей там запоет.
+
+Письмо твое в Давинчике зависает,
+С улыбкой на лице его прочту,
+И каждый смайлик душу согревает,
+Я в сердце о тебе храню мечту!
+
+Рука коснется букв клавиатуры,
+И в каждом слове нежность и любовь,
+Пускай, что небеса сегодня хмуры,
+Я знаю, что напишешь ты мне вновь!
+
+Я верю, что ты будешь улыбаться,
+И верю в виртуальную любовь!!!
+По-разному мы можем все влюбляться,
+Но одинаково горит от страсти кровь...
+    </div>
+
+    <div class="chat-box">
+      .-~-.
+      <div>В Чате: {{ chat_count }} человек</div>
+      __==__<br>
+      <a href="#">Регистрация</a>
+      <form>
+        <div>
+          <input type="text" placeholder="Ваш Ник или ID:">
+        </div>
+        <div>
+          <label><input type="checkbox"> Транслит ника:(?)</label>
+        </div>
+        <div>
+          <input type="password" placeholder="Пароль:">
+        </div>
+        <div>
+          <label><input type="checkbox"> Запомнить Меня</label>
+        </div>
+        <button type="submit">Войти</button>
+      </form>
+      <a href="#">Забыли пароль?</a>
+      <div>
+        <a href="#">Регистрация</a><br>
+        <a href="#">Фото-альбом</a><br>
+        <a href="#">Правила чата</a><br>
+        <a href="#">Письмо админу</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      » Новеньких: {{ new_users }}<br>
+      » Именинников: {{ birthday_count }}<br>
+      » Регистраций: 12<br>
+      » Всего Парней: 6<br>
+      » Всего Девушек: 6<br>
+      » Посетит. за сутки: {{ visits_today }}<br>
+      <br>
+      [ {{ compression_ratio }} | Сжатие: {{ compression_percent }} ]
+    </div>
+
+    <div class="footer">
+      ©ДАВИНЧИК ©2025
+    </div>
+  </div>
+</body>
+</html>
