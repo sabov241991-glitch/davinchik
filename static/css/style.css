@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffe6f2 0%, #f0f8ff 100%);
+    color: #333;
+    line-height: 1.6;
+    padding: 15px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 2px solid #ff6b9d;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #ff6b9d;
+}
+
+h1 {
+    font-size: 32px;
+    color: #ff4d8d;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.meetings {
+    font-size: 18px;
+    color: #ff6b9d;
+    font-weight: bold;
+}
+
+.poem-section {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: #fff5f8;
+    border-radius: 10px;
+    border: 1px solid #ffd1dc;
+}
+
+.poem {
+    line-height: 1.8;
+    color: #666;
+    font-style: italic;
+}
+
+.welcome-section {
+    margin: 25px 0;
+    padding: 20px;
+    background: #fffde7;
+    border-radius: 12px;
+    border-left: 4px solid #ffd600;
+}
+
+.welcome-section h2 {
+    text-align: center;
+    color: #ff6b9d;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.time-date {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.welcome-poem {
+    line-height: 1.8;
+    color: #555;
+    text-align: center;
+    font-style: italic;
+}
+
+.login-section {
+    margin: 25px 0;
+}
+
+.admin-tag {
+    text-align: center;
+    font-weight: bold;
+    color: #ff4d8d;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.divider {
+    text-align: center;
+    color: #888;
+    margin: 12px 0;
+    font-size: 16px;
+}
+
+.chat-info {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #ff4d8d;
+}
+
+.reg-link {
+    text-align: center;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.reg-link a {
+    color: #ff4d8d;
+    text-decoration: none;
+}
+
+.reg-link a:hover {
+    text-decoration: underline;
+}
+
+.login-form {
+    background: #fff5f8;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ffd1dc;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #ff4d8d;
+    font-size: 16px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffd1dc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: monospace;
+    background: white;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #ff6b9d;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #ff4d8d;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #ff4d8d, #ff6b9d);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 15px 0;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(45deg, #ff6b9d, #ff4d8d);
+}
+
+.forgot-password {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+.main-menu {
+    margin: 20px 0;
+}
+
+.main-menu div {
+    margin: 8px 0;
+}
+
+.main-menu a {
+    color: #ff4d8d;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.main-menu a:hover {
+    color: #ff1a75;
+}
+
+.stats {
+    font-size: 15px;
+    color: #666;
+    line-height: 2;
+    margin: 20px 0;
+}
+
+.stats span {
+    font-weight: bold;
+    color: #ff4d8d;
+}
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.8;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+}
+
+.exit {
+    font-weight: bold;
+    color: #ff4d8d;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.wap {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.nick-reg {
+    font-weight: bold;
+    color: #ff4d8d;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.exchange {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.tech-info {
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.formats {
+    color: #aaa;
+    font-size: 12px;
+}
+
+@media (max-width: 520px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .welcome-section {
+        padding: 15px;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    button {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
