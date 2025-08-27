@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ДАВИНЧИК</title>
+  <style>
+    :root{
+      --bg:#eef4fb;
+      --panel:#f6fbff;
+      --ink:#0b0f1c;
+      --ink-soft:#1a2233;
+      --line:#c9d8ef;
+      --line2:#9fb6db;
+    }
+    html,body{margin:0;background:var(--bg);font-family: Georgia,"Times New Roman",Times,serif;color:var(--ink);}
+    .page{max-width:720px;margin:18px auto 36px;padding:0 10px;}
+
+    /* Общая «двойная» рамка как на оригинале */
+    .frame{
+      background:var(--panel);
+      border:1px solid var(--line2);
+      box-shadow: inset 0 0 0 3px #e6eef9, inset 0 0 0 6px var(--line);
+      border-radius:6px;
+    }
+    .block{ padding:12px; }
+    .block + .block{ margin-top:14px; }
+
+    /* Шапка */
+    .header{ text-align:center; }
+    .title{ font-size:36px; font-weight:800; letter-spacing:1px; margin:2px 0 8px; }
+    .sep{ font-weight:800; color:var(--ink-soft); }
+    .dt{ font-weight:800; margin:2px 0; }
+
+    /* Стих — узкая колонка, жирный курсив, плотные межстрочники */
+    .poem-wrap{ border-radius:12px; }
+    .poem{ max-width:520px; margin:0 auto; text-align:center; font-style:italic; font-weight:800; font-size:28px; line-height:1.38; letter-spacing:.2px; color:#0b0f1c; }
+    .poem p{ margin:18px 0 22px; }
+
+    /* Блок чата + форма */
+    .mid{ text-align:center; font-weight:800; color:var(--ink); }
+    .line{ color:var(--ink-soft); margin:4px 0; }
+    .form{ max-width:560px; margin:10px auto 0; border-radius:12px; }
+    .field{ text-align:left; margin:10px 0; }
+    label{ display:block; margin-bottom:6px; font-weight:800; }
+    input[type="text"],input[type="password"]{
+      width:100%;height:42px;box-sizing:border-box;border-radius:10px;border:1px solid var(--line);
+      background:#fff;padding:8px 12px;font-size:18px;font-family:inherit;color:var(--ink);outline:none;
+    }
+    .row{ display:flex; align-items:center; gap:10px; margin-top:8px; }
+    .btn{ display:inline-block; margin-top:12px; padding:8px 20px; border-radius:10px; border:1px solid var(--line2); background:#fff; font-weight:800; color:var(--ink); }
+
+    .links{ text-align:center; margin:16px 0 6px; }
+    .links a{ display:block; text-decoration:none; color:#173a7a; font-weight:800; margin:6px 0; }
+
+    /* Статистика */
+    .stats{ font-weight:800; }
+    .stats ul{ margin:0; padding-left:18px; }
+    .compress{ text-align:center; margin-top:12px; }
+
+    .footer{ text-align:center; font-weight:800; margin:16px 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Шапка -->
+    <div class="frame block header">
+      <div class="title">ДАВИНЧИК</div>
+      <div class="sep">~-~</div>
+      <div class="dt">Добро Пожаловать</div>
+      <div class="dt">-</div>
+      <div class="dt">{{ time_str }}</div>
+      <div class="dt">{{ date_str }}</div>
+      <div class="dt">{{ weekday_str }}</div>
+      <div class="sep">~-~</div>
+    </div>
+
+    <!-- Стих -->
+    <div class="frame block poem-wrap">
+      <div class="poem">
+        <p>Когда ночами мне одному не спится,<br>
+        К компьютеру душа меня зовет.<br>
+        За окнами на ветке спит синица,<br>
+        А утром соловей там запоет.</p>
+
+        <p>Письмо твое в Давинчике зависает,<br>
+        С улыбкой на лице его прочту,<br>
+        И каждый смайлик душу согревает,<br>
+        Я в сердце о тебе храню мечту!</p>
+
+        <p>Рука коснется букв клавиатуры,<br>
+        И в каждом слове нежность и любовь,<br>
+        Пускай, что небеса сегодня хмуры,<br>
+        Я знаю, что напишешь ты мне вновь!</p>
+
+        <p>Я верю, что ты будешь улыбаться,<br>
+        И верю в виртуальную любовь!!!<br>
+        По-разному мы можем все влюбляться,<br>
+        Но одинаково горит от страсти кровь...</p>
+      </div>
+    </div>
+
+    <!-- В чате + форма -->
+    <div class="frame block mid">
+      <div class="line">.-~-.</div>
+      <div>В Чате: {{ online_users }} человек</div>
+      <div class="line">__=__</div>
+
+      <div class="frame block form">
+        <div class="field">
+          <label for="nick">Ваш Ник или ID:</label>
+          <input id="nick" type="text" />
+        </div>
+        <div class="row">
+          <input id="tr" type="checkbox" />
+          <label for="tr">Транслит ника:(?)</label>
+        </div>
+        <div class="field">
+          <label for="pwd">Пароль:</label>
+          <input id="pwd" type="password" />
+        </div>
+        <div class="row">
+          <input id="remember" type="checkbox" />
+          <label for="remember">Запомнить Меня</label>
+        </div>
+        <button class="btn">Войти</button>
+      </div>
+
+      <div class="links">
+        <a href="#">Забыли пароль?</a>
+      </div>
+      <div class="links" style="margin-top:6px;">
+        <a href="#">Регистрация</a>
+        <a href="#">Фото-альбом</a>
+        <a href="#">Правила чата</a>
+        <a href="#">Письмо админу</a>
+      </div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="frame block stats">
+      <ul>
+        <li>Новеньких: {{ stats.new_users }}</li>
+        <li>Именинников: {{ stats.birthdays }}</li>
+        <li>Регистраций: {{ stats.registrations }}</li>
+        <li>Всего Парней: {{ stats.males }}</li>
+        <li>Всего Девушек: {{ stats.females }}</li>
+        <li>Посетит. за сутки: {{ stats.visits_today }}</li>
+      </ul>
+      <div class="compress">[ {{ compress.size }} | Сжатие: {{ compress.ratio }} ]</div>
+    </div>
+
+    <div class="footer">©ДАВИНЧИК ©2025</div>
+  </div>
+</body>
+</html>
