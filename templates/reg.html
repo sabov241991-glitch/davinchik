@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ header_title }}</title>
+<style>
+  :root{
+    --bg1:#c9d3e3; --bg2:#bfcade;
+    --panel:#eef3fb;
+    --rim-dark:#8e9db6;
+    --rim-mid:#b5c1d6;
+    --rim-light:#e9eff8;
+    --ink:#0a0a0a;
+    --link:#0c49b7;
+  }
+  html,body{margin:0;padding:0;background:linear-gradient(#cad4e5,#b8c6dc) fixed;
+    font-family:"Times New Roman", Georgia, serif;color:var(--ink);}
+
+  .wrap{max-width:720px;margin:10px auto 24px;background:linear-gradient(#d5dff0,#d0dbed);
+    border-radius:14px;position:relative;padding:10px;
+    box-shadow:0 0 0 1px var(--rim-dark) inset,0 0 0 4px var(--rim-mid) inset,0 0 0 8px var(--rim-light) inset;}
+  .panel{background:var(--panel);border-radius:12px;padding:10px;box-shadow:inset 0 0 0 2px var(--rim-light),inset 0 0 0 6px #fff;}
+  .head{font-weight:700;font-size:28px;color:#0a2b4f;text-shadow:0 1px 0 #fff;text-align:center;
+    border-radius:12px;background:var(--panel);padding:10px 8px;margin:4px 6px 8px;
+    box-shadow:inset 0 0 0 2px var(--rim-light),inset 0 0 0 6px #fff;}
+  .center{text-align:center}
+  .ascii{color:#4a5e86}
+  .sep{height:1px;margin:8px 4px;background:linear-gradient(90deg,#b7c4d9,#eef3fb,#b7c4d9)}
+  .card{border-radius:12px;margin:8px;padding:12px 10px;background:#f1f5fd;
+    box-shadow:inset 0 0 0 2px #dbe5f6,inset 0 0 0 6px #fff;}
+
+  /* Кнопка/инпуты как на скрине */
+  input[type=text], input[type=password]{
+    width:88%;margin:0 auto;display:block;padding:7px 10px;border:1px solid #8fa1b8;border-radius:6px;
+    background:#fff;box-shadow:inset 0 1px 0 #ffffff, inset 0 0 0 2px #e7edf8;box-sizing:border-box;
+  }
+  .btn{display:inline-block;background:#f2f6ff;border:1px solid #8ea2c7;border-radius:8px;padding:6px 14px;cursor:pointer}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{margin:10px auto 6px;text-align:center;color:#22395c}
+  .badge{display:inline-block;background:#fff;border:1px solid #b8c6df;border-radius:8px;padding:4px 8px;margin:6px 2px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">{{ header_title }}</div>
+    <div class="panel">
+
+      {% if stage == "rules" %}
+        <div class="card">
+          <div class="center" style="font-size:26px; font-weight:700; color:#223b7a;">Правила регистрации</div>
+          <div style="margin-top:10px; font-size:20px; line-height:1.35;">
+            <p><i>Разрешено</i> в "нике" использовать только кириллицу и знаки латинского алфавита, цифры (кроме 0), а также символы: @, ), (, *, !, -, ~, _, ], [, =.</p>
+            <p><i>Разрешено</i> в пароле использовать только знаки латинского алфавита и цифры. Пароль не может быть короче четырёх символов.</p>
+            <p><i>Запрещено</i> одновременно использовать русские и латинские знаки.</p>
+            <p><i>Обязательно</i> заполнить поля со звёздочкой (*).</p>
+            <p><i>Рекомендуем</i> указать ваш e-mail — он пригодится для восстановления пароля.</p>
+          </div>
+          <div class="center" style="margin-top:8px;"><a href="{{ url_for('reg', stage='step1') }}">Начать регистрацию</a></div>
+          <div class="center ascii" style="margin-top:6px">-~-</div>
+          <div class="center"><a href="{{ url_for('index') }}">&lt;&lt; Главная &lt;&lt;</a></div>
+        </div>
+
+      {% elif stage == "step1" %}
+        <div class="card">
+          <div class="center" style="font-size:26px; font-weight:700; color:#223b7a;">Регистрация Шаг 1 из 2</div>
+          <div class="center" style="margin:6px 0;"><a href="{{ url_for('reg', stage='rules') }}">Правила транслита</a></div>
+          <form method="post" class="card" style="padding-top:8px;">
+            <div class="center" style="font-size:20px; font-weight:700;">*Введите желаемый ник:</div>
+            <input type="text" name="nick" required>
+            <div class="center" style="margin:10px 0 8px; font-size:20px;">
+              <label><input type="checkbox" name="translit"> Транслит</label>
+            </div>
+            <div class="center"><button class="btn" type="submit">Продолжить</button></div>
+          </form>
+          <div class="center" style="margin-top:8px;"><a href="{{ url_for('index') }}">&lt;&lt; Главная &lt;&lt;</a></div>
+        </div>
+
+      {% elif stage == "step2" %}
+        <div class="card">
+          <div class="center" style="font-size:26px; font-weight:700; color:#223b7a;">Регистрация Шаг 2 из 2</div>
+          <div class="center" style="margin:6px 0;"><a href="{{ url_for('reg', stage='rules') }}">Правила транслита</a></div>
+          <div class="center" style="font-size:20px;">Ник <b>{{ nick }}</b> свободен</div>
+
+          <form method="post" class="card" style="padding-top:8px;">
+            <div class="center" style="font-size:20px; font-weight:700;">*Пароль:</div>
+            <input type="password" name="pwd1" required>
+            <div class="center" style="font-size:20px; font-weight:700; margin-top:8px;">*Повторите пароль:</div>
+            <input type="password" name="pwd2" required>
+
+            <div class="center" style="font-size:20px; font-weight:700; margin-top:8px;">*Ваше имя:</div>
+            <input type="text" name="name" required>
+
+            <div class="center" style="margin:10px 0;"><label><input type="checkbox" name="translit2"> Транслит</label></div>
+
+            <div class="center" style="font-size:20px;">Пол:
+              <select name="sex">
+                <option value="M">M</option>
+                <option value="F">F</option>
+              </select>
+            </div>
+
+            <div class="center" style="font-size:20px; font-weight:700; margin-top:8px;">*Дата рождения:</div>
+            <div class="center">
+              <input type="text" name="d" style="width:60px; display:inline-block"> -
+              <input type="text" name="m" style="width:60px; display:inline-block"> -
+              <input type="text" name="y" style="width:80px; display:inline-block">
+            </div>
+
+            <div class="center" style="font-size:20px; margin-top:8px;">Ваш E-Mail:</div>
+            <input type="text" name="email">
+
+            <div class="center" style="font-size:20px; font-weight:700; margin-top:8px;">*О себе:</div>
+            <div class="center">
+              <textarea name="about" rows="5" style="width:88%; box-sizing:border-box; border:1px solid #8fa1b8; border-radius:6px;"></textarea>
+            </div>
+
+            <div class="center" style="margin:10px 0;"><label><input type="checkbox" name="translit3"> Транслит</label></div>
+
+            <div class="center" style="font-size:20px;">*Введите код с картинки:</div>
+            <div class="center" style="margin:4px 0;"><img alt="captcha" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" style="border:1px solid #888; width:90px; height:26px"></div>
+            <div class="center"><input type="text" name="captcha" style="width:120px"></div>
+
+            <div class="center" style="margin:10px 0;"><button class="btn" type="submit">Регистрация</button></div>
+          </form>
+
+          <div class="center" style="margin-top:8px;"><a href="{{ url_for('reg', stage='step1') }}">&lt; Назад &lt;</a></div>
+          <div class="center"><a href="{{ url_for('index') }}">&lt;&lt; На главную &lt;&lt;</a></div>
+        </div>
+
+      {% elif stage == "done" %}
+        <div class="card">
+          <div class="center" style="font-size:26px; font-weight:700; color:#223b7a;">Регистрация завершена</div>
+
+          <div class="center" style="margin:10px 0;">
+            <div>Поздравляем!</div>
+            <div>Вы успешно зарегистрированы!</div>
+          </div>
+
+          <div class="center" style="margin:8px 0;">
+            Ваш ник: <b>{{ nick }}</b><br>
+            Ваш ID: <b>{{ user_id }}</b><br>
+            Пароль: <b>{{ pwd }}</b>
+          </div>
+
+          <div class="center" style="margin:10px 0; line-height:1.5;">
+            <div><b>Автологин (Вход по закладке)</b></div>
+            <div style="margin-top:6px">{{ autologin_plain }}</div>
+            <div style="margin-top:6px">{{ autologin_xml }}</div>
+            <div class="center" style="margin-top:8px;">
+              <input type="text" value="{{ autologin_plain }}" style="width:90%;"
+                     onclick="this.select()" readonly>
+            </div>
+          </div>
+
+          <div class="center" style="margin:10px 0;"><a href="#">> В Чат ></a></div>
+          <div class="center"><a href="{{ url_for('index') }}">&lt;&lt; На главную &lt;&lt;</a></div>
+        </div>
+      {% endif %}
+
+      <div class="center badge">[ {{ perf_time }} | Сжатие: {{ compression_pct }}% ]</div>
+      <div class="foot">©ДАВИНЧИК ©2025</div>
+    </div>
+  </div>
+</body>
+</html>
