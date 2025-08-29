@@ -1,0 +1,75 @@
+{% extends "_base_reg.html" %}
+{% block content %}
+  <div class="sub">Правила транслита</div>
+  <div class="center" style="font-size:20px;margin:6px 0;">
+    Ник <b>{{ nick }}</b> свободен
+  </div>
+
+  <form class="card" action="{{ url_for('reg', stage='step2') }}" method="post" autocomplete="off">
+    <input type="hidden" name="nick" value="{{ nick }}">
+    <div class="center" style="margin:8px 0;">
+      <div>*Пароль:</div>
+      <input type="password" name="pass1" required>
+    </div>
+    <div class="center" style="margin:8px 0;">
+      <div>*Повторите пароль:</div>
+      <input type="password" name="pass2" required>
+    </div>
+    <div class="center" style="margin:8px 0;">
+      <div>*Ваше имя:</div>
+      <input type="text" name="name">
+    </div>
+
+    <div class="center" style="margin:8px 0;">
+      <label style="font-weight:400;"><input type="checkbox" name="translit"> Транслит</label>
+    </div>
+
+    <div class="center" style="margin:8px 0;">
+      Пол:
+      <select name="gender">
+        <option value="M">M</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+
+    <div class="center" style="margin:8px 0;">
+      *Дата рождения:
+      <div style="margin-top:6px">
+        <input type="text" name="d" placeholder="ДД" style="width:70px"> -
+        <input type="text" name="m" placeholder="ММ" style="width:70px"> -
+        <input type="text" name="y" placeholder="ГГГГ" style="width:90px">
+      </div>
+    </div>
+
+    <div class="center" style="margin:8px 0;">
+      Ваш E-Mail:
+      <div style="margin-top:6px"><input type="email" name="email"></div>
+    </div>
+
+    <div class="center" style="margin:8px 0;">
+      *О себе:
+      <div style="margin-top:6px"><textarea name="about"></textarea></div>
+    </div>
+
+    <div class="center" style="margin:8px 0;">
+      <label style="font-weight:400;"><input type="checkbox" name="translit2"> Транслит</label>
+    </div>
+
+    <div class="center" style="margin:8px 0;">
+      *Введите код с картинки:
+      <div style="margin:6px 0;"><img src="https://dummyimage.com/90x28/ffffff/000000&text=97083" alt="captcha"></div>
+      <div><input type="text" name="captcha" style="width:120px"></div>
+    </div>
+
+    <div class="center" style="margin-top:10px;">
+      <button class="btn" type="submit">Регистрация</button>
+    </div>
+  </form>
+
+  <div class="center links" style="margin-top:6px;">
+    <a href="{{ url_for('reg', stage='step1') }}">&lt; Назад &lt;</a>
+  </div>
+  <div class="center links" style="margin-top:4px;">
+    <a href="{{ url_for('index') }}">&lt;&lt; На главную &lt;&lt;</a>
+  </div>
+{% endblock %}
