@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ header_title }}</title>
+<style>
+  :root{ --bg1:#c9d3e3; --bg2:#bfcade; --panel:#eef3fb; --rim-dark:#8e9db6; --rim-mid:#b5c1d6; --rim-light:#e9eff8; --ink:#0a0a0a; --link:#0c49b7; }
+  html,body{ margin:0; padding:0; background:linear-gradient(#cad4e5,#b8c6dc) fixed; font-family:"Times New Roman", Georgia, serif; color:var(--ink); }
+  .wrap{ max-width:720px; margin:8px auto 20px; background:linear-gradient(#d5dff0,#d0dbed); border-radius:14px; position:relative; padding:10px;
+         box-shadow:0 0 0 1px var(--rim-dark) inset,0 0 0 4px var(--rim-mid) inset,0 0 0 8px var(--rim-light) inset,0 1px 0 #7f8da6, 0 2px 0 #aebad0; }
+  .panel{ background:var(--panel); border-radius:12px; padding:10px; position:relative; box-shadow:inset 0 0 0 2px var(--rim-light), inset 0 0 0 6px #fff; }
+  .head{ text-align:center; font-weight:700; font-size:32px; letter-spacing:1px; color:#0a2b4f; text-shadow:0 1px 0 #ffffff; margin:4px 6px 8px; padding:10px 8px;
+         border-radius:12px; background:var(--panel); box-shadow: inset 0 0 0 2px var(--rim-light), inset 0 0 0 6px #fff, 0 1px 0 #7f8da6, 0 2px 0 #aebad0; }
+  .sep{height:1px;margin:8px 4px;background:linear-gradient(90deg,#b7c4d9,#eef3fb,#b7c4d9)}
+  .center{text-align:center} .small{font-size:14px} .ascii{color:#4a5e86}
+  .card{ border-radius:12px; margin:8px; padding:12px 8px; background:#f1f5fd; box-shadow: inset 0 0 0 2px #dbe5f6, inset 0 0 0 6px #ffffff; }
+  .poem{margin:6px 0}
+  .poem-inner{ max-width:520px; margin:0 auto; }
+  .poem-line{ font-style:italic; font-weight:700; font-size:18px; line-height:1.26; letter-spacing:0.05px; margin:6px 0; text-align:center; color:var(--ink); }
+  .poem-gap{height:16px}
+  .loginwrap{ background:#f5f7fc; border-radius:12px; padding:10px; margin:8px; box-shadow: inset 0 0 0 2px #dee7f7, 0 1px 0 #8aa, 0 2px 0 #bccddd; }
+  label{display:block;margin:6px 0 2px;font-weight:700;text-align:center}
+  input[type=text],input[type=password]{ width:88%; padding:7px 10px; border:1px solid #8fa1b8; border-radius:6px; background:#fff;
+    box-shadow:inset 0 1px 0 #ffffff, inset 0 0 0 2px #e7edf8; margin:0 auto; display:block; box-sizing:border-box; }
+  .row{display:flex;align-items:center;gap:8px;margin:8px 0;justify-content:center}
+  .btn{display:inline-block;background:#f2f6ff;border:1px solid #8ea2c7;border-radius:8px;padding:6px 14px;cursor:pointer}
+  .links a{color:var(--link);text-decoration:none} .links a:hover{text-decoration:underline}
+  ul.stats{list-style:'» ';padding-left:18px;margin:8px 0 4px}
+  .badge{display:inline-block;background:#fff;border:1px solid #b8c6df;border-radius:8px;padding:4px 8px;margin:6px 2px}
+  .footer{margin:12px auto 6px;text-align:center;color:#22395c}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">{{ header_title }}</div>
+    <div class="sep"></div>
+
+    <div class="panel">
+      <div class="center small ascii">-~-</div>
+      <div class="center">Добро Пожаловать</div>
+      <div class="center ascii">-</div>
+      <div class="center">{{ time_str }}</div>
+      <div class="center">{{ date_str }}</div>
+      <div class="center">{{ weekday_str }}</div>
+      <div class="center small ascii">-~-</div>
+
+      <div class="card">
+        <div class="poem">
+          <div class="poem-inner">
+            {% for line in poem_lines %}
+              {% if line == "" %}<div class="poem-gap"></div>
+              {% else %}<div class="poem-line">{{ line }}</div>{% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="loginwrap">
+      <div class="center ascii">.-~-.</div>
+      <div class="center">В Чате: {{ in_chat }} человек</div>
+      <div class="center ascii">__==__</div>
+
+      <div class="center links" style="margin:6px 0"><a href="/register">Регистрация</a></div>
+
+      <form class="card" action="/login" method="post" autocomplete="off">
+        <label for="nick">Ваш Ник или ID:</label>
+        <input id="nick" name="nick" type="text">
+        <div class="row"><label style="margin:0;font-weight:400"><input type="checkbox" name="translit"> Транслит ника:(?)</label></div>
+        <label for="password">Пароль:</label>
+        <input id="password" name="password" type="password">
+        <div class="row"><label style="margin:0;font-weight:400"><input type="checkbox" name="remember"> Запомнить Меня</label></div>
+        <div class="center" style="margin-top:6px"><button class="btn" type="submit">Войти</button></div>
+      </form>
+
+      <div class="center" style="margin-top:6px"><a href="#" class="links">Забыли пароль?</a></div>
+      <div class="center ascii">.-~-.</div>
+
+      <div class="links" style="margin-left:8px">
+        <div><a href="/register">Регистрация</a></div>
+        <div><a href="#">Фото-альбом</a></div>
+        <div><a href="#">Правила чата</a></div>
+        <div><a href="#">Письмо админу</a></div>
+      </div>
+
+      <div class="ascii">__~~~__</div>
+      <ul class="stats">
+        <li>Новеньких: {{ newbies }}</li>
+        <li>Именинников: {{ birthdays }}</li>
+        <li>Регистраций: {{ regs_total }}</li>
+        <li>Всего Парней: {{ males }}</li>
+        <li>Всего Девушек: {{ females }}</li>
+        <li>Посетит. за сутки: {{ visits_day }}</li>
+      </ul>
+
+      <div class="center badge">[ {{ perf_time }} | Сжатие: {{ compression_pct }}% ]</div>
+      <div class="footer">©ДАВИНЧИК ©2025</div>
+    </div>
+  </div>
+</body>
+  </html>
