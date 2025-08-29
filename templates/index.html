@@ -1,0 +1,55 @@
+<!-- Правая часть / логин -->
+    <div class="loginwrap">
+      <div class="center ascii">.-~-.</div>
+      <div class="center">В Чате: {{ in_chat }} человек</div>
+      <div class="center ascii">__==__</div>
+
+      <!-- ВЕРНУЛ КНОПКУ РЕГИСТРАЦИЯ -->
+      <div class="center links" style="margin:6px 0">
+        <a href="{{ url_for('reg', stage='rules') }}">Регистрация</a>
+      </div>
+
+      <form class="card" action="/login" method="post" autocomplete="off">
+        <label for="nick">Ваш Ник или ID:</label>
+        <input id="nick" name="nick" type="text">
+        <div class="row">
+          <label style="margin:0;font-weight:400">
+            <input type="checkbox" name="translit"> Транслит ника:(?)
+          </label>
+        </div>
+        <label for="password">Пароль:</label>
+        <input id="password" name="password" type="password">
+        <div class="row">
+          <label style="margin:0;font-weight:400">
+            <input type="checkbox" name="remember"> Запомнить Меня
+          </label>
+        </div>
+        <div class="center" style="margin-top:6px">
+          <button class="btn" type="submit">Войти</button>
+        </div>
+      </form>
+
+      <div class="center" style="margin-top:6px"><a href="#" class="links">Забыли пароль?</a></div>
+      <div class="center ascii">.-~-.</div>
+
+      <div class="links" style="margin-left:8px">
+        <div><a href="#">Фото-альбом</a></div>
+        <div><a href="#">Правила чата</a></div>
+        <div><a href="#">Письмо админу</a></div>
+      </div>
+
+      <div class="ascii">__~~~__</div>
+
+      <ul class="stats">
+        <li>Новеньких: {{ newbies }}</li>
+        <li>Именинников: {{ birthdays }}</li>
+        <li>Регистраций: {{ regs_total }}</li>
+        <li>Всего Парней: {{ males }}</li>
+        <li>Всего Девушек: {{ females }}</li>
+        <li>Посетит. за сутки: {{ visits_day }}</li>
+      </ul>
+
+      <div class="poem-gap"></div>
+      <div class="compress">[ {{ perf_time }} | Сжатие: {{ compression_pct }}% ]</div>
+      <div class="footer"><span class="footer-badge">©ДАВИНЧИК ©2025</span></div>
+    </div>
