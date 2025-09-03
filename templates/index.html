@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ header_title }}</title>
+<style>
+  :root{
+    --bg1:#c9d3e3; --bg2:#bfcade;
+    --panel:#eef3fb;
+    --rim-dark:#8e9db6;
+    --rim-mid:#b5c1d6;
+    --rim-light:#e9eff8;
+    --ink:#0a0a0a;
+    --link:#0c49b7;
+  }
+  html,body{
+    margin:0; padding:0;
+    background:linear-gradient(#cad4e5,#b8c6dc) fixed;
+    font-family:"Times New Roman", Georgia, serif;
+    color:var(--ink);
+  }
+  .wrap{
+    max-width:720px;
+    margin:10px auto 24px;
+    background:linear-gradient(#d5dff0,#d0dbed);
+    border-radius:14px;
+    padding:10px;
+    box-shadow:
+      0 0 0 1px var(--rim-dark) inset,
+      0 0 0 4px var(--rim-mid) inset,
+      0 0 0 8px var(--rim-light) inset,
+      0 1px 0 #7f8da6, 0 2px 0 #aebad0;
+  }
+  .panel{
+    background:var(--panel);
+    border-radius:12px;
+    padding:10px;
+    box-shadow:inset 0 0 0 2px var(--rim-light), inset 0 0 0 6px #fff;
+  }
+  .head{
+    text-align:center;
+    font-weight:700;
+    font-size:32px;
+    letter-spacing:1px;
+    color:#0a2b4f;
+    text-shadow:0 1px 0 #ffffff;
+    margin:4px 6px 8px;
+    padding:10px 8px;
+    border-radius:12px;
+    background:var(--panel);
+    box-shadow:
+      inset 0 0 0 2px var(--rim-light),
+      inset 0 0 0 6px #fff,
+      0 1px 0 #7f8da6, 0 2px 0 #aebad0;
+  }
+  .sep{height:1px;margin:8px 4px;background:linear-gradient(90deg,#b7c4d9,#eef3fb,#b7c4d9)}
+  .center{text-align:center}
+  .ascii{color:#4a5e86}
+  .small{font-size:14px}
+
+  /* ===== СТИХ — узкая колонка и точные разрывы ===== */
+  .poem-box{
+    background:#f1f5fd;
+    border-radius:12px;
+    padding:18px 10px;
+    margin:8px;
+    box-shadow:inset 0 0 0 2px #dbe5f6, inset 0 0 0 6px #ffffff;
+  }
+  .poem-inner{
+    max-width:520px;       /* узкая колонка */
+    margin:0 auto;
+  }
+  .poem-line{
+    text-align:center;
+    font-style:italic;
+    font-weight:700;
+    font-size:20px;
+    line-height:1.35;
+    margin:6px 0;
+  }
+  .poem-stanza-gap{ height:16px; }
+
+  /* Заголовки времени/даты */
+  .welcome{font-weight:700; font-size:24px; text-align:center;}
+  .time{font-weight:700; font-size:22px; text-align:center; margin-top:6px;}
+  .date{font-weight:400; font-size:20px; text-align:center;}
+  .weekday{font-weight:400; font-size:20px; text-align:center;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Верх -->
+    <div class="head">{{ header_title }}</div>
+
+    <div class="panel">
+      <div class="center small ascii">-~-</div>
+      <div class="welcome">{{ welcome_title }}</div>
+      <div class="center ascii">-</div>
+      <div class="time">{{ time_str }}</div>
+      <div class="date">{{ date_str }}</div>
+      <div class="weekday">{{ weekday_str }}</div>
+      <div class="center small ascii">-~-</div>
+
+      <!-- СТИХ -->
+      <div class="poem-box">
+        <div class="poem-inner">
+          {% for ln in poem_lines %}
+            {% if ln == "" %}
+              <div class="poem-stanza-gap"></div>
+            {% else %}
+              <div class="poem-line">{{ ln }}</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- НИЖЕ — оставил только разделитель.
+         Если у тебя есть свои блоки (в чат, логин, статистика),
+         можешь вернуть их сюда без изменений. -->
+    <div class="sep"></div>
+  </div>
+</body>
+</html>
